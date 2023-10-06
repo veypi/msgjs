@@ -5,14 +5,16 @@
  * Distributed under terms of the MIT license.
  */
 
+let conf = {
+    timeout: 1000,
+}
+
 
 class Message {
 
     private box: HTMLDivElement
-    private timeout: number
 
-    constructor(id: string, timeout?: number) {
-        this.timeout = timeout || 100
+    constructor(id: string,) {
         this.box = document.getElementById(id) as HTMLDivElement
         if (!this.box) {
             console.error('can not found element ' + id)
@@ -33,15 +35,17 @@ class Message {
             }
         }, timeout)
     }
+    Prompt(text: string) {
+    }
     Warn(text: string) {
-        this.base(text, ['v-msg-warn'], this.timeout + 1500)
+        this.base(text, ['v-msg-warn'], conf.timeout + 1500)
     }
     Info(text: string) {
-        this.base(text, ['v-msg-info'], this.timeout + 500)
+        this.base(text, ['v-msg-info'], conf.timeout + 500)
     }
 }
 
-export { Message }
+export { conf }
 
 let msg: Message
 

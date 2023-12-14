@@ -5,6 +5,8 @@
  * Distributed under terms of the MIT license.
  */
 
+import './index.css'
+
 let conf = {
     timeout: 1000,
 }

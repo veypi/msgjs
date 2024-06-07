@@ -21,6 +21,7 @@ class Message {
         if (!this.box) {
             console.info('create vmsg div ' + id)
             this.box = document.createElement("div")
+            this.box.id = id
             document.body.appendChild(this.box)
         }
         this.box.classList.add('v-msg-box')

@@ -19,8 +19,9 @@ class Message {
     constructor(id: string,) {
         this.box = document.getElementById(id) as HTMLDivElement
         if (!this.box) {
-            console.error('can not found element ' + id)
-            return
+            console.info('create vmsg div ' + id)
+            this.box = document.createElement("div")
+            document.body.appendChild(this.box)
         }
         this.box.classList.add('v-msg-box')
     }

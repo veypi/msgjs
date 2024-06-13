@@ -39,7 +39,37 @@ class Message {
             }
         }, timeout)
     }
-    Prompt(text: string) {
+    private withinput(title: string, value: string): Promise<string> {
+        let box = document.createElement('div')
+        box.classList.add('v-msg-frame')
+        box.innerHTML = `
+<div class="v-msg-prompt">
+  <div class="v-msg-prompt-title">${title}</div>
+  <div class='v-msg-prompt-input-frame'>
+    <input class="v-msg-prompt-input" />
+  </div>
+  <div class="v-msg-prompt-btns">
+    <button class="v-msg-prompt-cancel v-msg-prompt-btn">取消</button>
+    <button class="v-msg-prompt-ok v-msg-prompt-btn">确定</button>
+</div>
+`
+        let input = box.querySelector('input') as HTMLInputElement
+        input.value = value
+        this.box.appendChild(box)
+        return new Promise((resolve, reject) => {
+            let bok = box.querySelector('.v-msg-prompt-ok') as HTMLInputElement
+            let bcancel = box.querySelector('.v-msg-prompt-cancel') as HTMLInputElement
+            bok.onclick = () => {
+                resolve(input.value)
+                this.box.removeChild(box)
+            }
+            bcancel.onclick = () => {
+                this.box.removeChild(box)
+            }
+        })
+    }
+    Prompt(text: string, value: string): Promise<string> {
+        return this.withinput(text, value)
     }
     Warn(text: string) {
         this.base(text, ['v-msg-warn'], conf.timeout + 1500)

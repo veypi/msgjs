@@ -81,3 +81,84 @@
         transform: scaleX(0);
     }
 }
+
+.v-msg-frame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(128, 128, 128, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.v-msg-prompt {
+  background: #eee;
+  color: #000;
+  border-radius: 10px;
+  height: 160px;
+  width: 300px;
+  margin: 0 auto;
+  padding: 15px;
+  position: relative;
+}
+.v-msg-prompt-title {
+  height: 20px;
+  font-size: 1.5rem;
+}
+.v-msg-prompt-input-frame {
+  height: 40px;
+  width: 270px;
+  margin: 15px 0;
+  position: relative;
+}
+.v-msg-prompt-input {
+  height: 40px;
+  width: 230px;
+  margin: 0 20px;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.v-msg-prompt-input-frame::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  width: 230px;
+  height: 0.1em;
+  background-color: #000;
+  transition: all 0.3s;
+}
+.v-msg-prompt-input-frame:hover::after {
+  left: 0px;
+  width: 270px;
+}
+
+
+.v-msg-prompt-btns {
+  height: 40px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding: 0 20px;
+  gap: 1rem;
+}
+.v-msg-prompt-btn {
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+.v-msg-prompt-btn:hover{
+  opacity: 0.8;
+}
+.v-msg-prompt-cancel {
+  border: 1px solid #999;
+}
+.v-msg-prompt-ok {
+  background: #21a6f3;
+}
+
